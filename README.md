@@ -1,4 +1,12 @@
 ## Project: Build a Traffic Sign Recognition Program
+**find original readme and instructions in the second section**
+
+### Solution update
+The original project file is preserved here: [Traffic_Sign_Classifier.ipynb](https://github.com/toluwajosh/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
+
+My solution is here: [Traffic_Sign_Classifier_solution_better_letnet_and_vis.ipynb](https://github.com/toluwajosh/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier_solution_better_letnet_and_vis.ipynb)
+
+## Original Readme
 [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 ### Overview
 
@@ -30,4 +38,3 @@ cd CarND-Traffic-Signs
 jupyter notebook Traffic_Signs_Recognition.ipynb
 ```
 3. Follow the instructions in the `Traffic_Signs_Recognition.ipynb` notebook.
-
