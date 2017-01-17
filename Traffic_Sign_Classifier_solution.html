@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>Traffic_Sign_Classifier_solution_better_letnet_and_vis</title>
+<title>Traffic_Sign_Classifier_solution</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -25768,21 +25768,6 @@ ERERERERkWdRoCQiIiIiIiIiIs+iQElERERERERERJ5FgZKIiIiIiIiIiDyLAiUREREREREREXmW
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
 <span class="kn">from</span> <span class="nn">copy</span> <span class="k">import</span> <span class="n">deepcopy</span>
 
-<span class="c1"># brightness augmentation</span>
-<span class="k">def</span> <span class="nf">brightness_aug</span><span class="p">(</span><span class="n">image</span><span class="p">):</span>
-    <span class="n">new_im</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_RGB2HSV</span><span class="p">)</span>
-    <span class="n">random_bright</span> <span class="o">=</span> <span class="mf">0.25</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">()</span>
-    <span class="c1">#print(random_bright)</span>
-    <span class="n">new_im</span><span class="p">[:,:,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_im</span><span class="p">[:,:,</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">random_bright</span>
-    <span class="n">new_im</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">new_im</span><span class="p">,</span><span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_HSV2RGB</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">new_im</span>
-
-<span class="k">def</span> <span class="nf">hist_eq</span><span class="p">(</span><span class="n">image</span><span class="p">):</span>
-    <span class="c1"># create a CLAHE object (Arguments are optional).</span>
-    <span class="n">clahe</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">createCLAHE</span><span class="p">(</span><span class="n">clipLimit</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">tileGridSize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
-    <span class="n">cl1</span> <span class="o">=</span> <span class="n">clahe</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">cl1</span>
-
 <span class="c1"># convert the the images to grayscale</span>
 <span class="n">X_train_gray</span> <span class="o">=</span> <span class="p">[</span><span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span> 
                 <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">X_train</span><span class="p">)[</span><span class="mi">0</span><span class="p">])]</span>
@@ -27849,7 +27834,7 @@ cQAAAABJRU5ErkJggg==
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
-<p>I converted the images which are originally in RGB format to grayscale images. I did this because I think the features needed for this kind of classification does not necessarily depend on the colours in the image. The characters in the traffic signs usually have the same colours or at most colours that dont really look different in grayscale.</p>
+<p>I converted the images which are originally in RGB format to grayscale images. I did this because I think the features needed for this kind of classification does not necessarily depend on the colours in the image. The characters in the traffic signs usually have the same colours or at most colours that dont really look different in grayscale. This also agrees with the result published by the paper by <a href="http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf">Sermanet and LeCun</a></p>
 <p>I also plan to perform normalization to the images to allow for better initialization of the parameters of the network. This, I would do after generating additional dataset for training.</p>
 
 </div>
@@ -31900,7 +31885,7 @@ This was done by applying;</p>
     <span class="n">fc2</span>    <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">fc2</span><span class="p">)</span>
     <span class="n">fc2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">dropout</span><span class="p">(</span><span class="n">fc2</span><span class="p">,</span> <span class="n">keep_prob</span><span class="p">)</span>
 
-    <span class="c1"># Layer 5: Fully Connected. Input = 256. Output = 43.</span>
+    <span class="c1"># Output Layer: Fully Connected. Input = 256. Output = 43.</span>
     <span class="n">fc3_W</span>  <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">truncated_normal</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">43</span><span class="p">),</span> <span class="n">mean</span> <span class="o">=</span> <span class="n">mu</span><span class="p">,</span> <span class="n">stddev</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">))</span>
     <span class="n">fc3_b</span>  <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">43</span><span class="p">))</span>
     <span class="n">logits</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">fc2</span><span class="p">,</span> <span class="n">fc3_W</span><span class="p">)</span> <span class="o">+</span> <span class="n">fc3_b</span>
@@ -31987,7 +31972,7 @@ Pooling 2: 2x2 kernel and 2 stride</p>
 Activation: ReLU</p>
 <p>Layer 4: Fully connected layer with 256 units
 Activation: ReLU</p>
-<p>Layer 5: Fully connected layer with 43 units for logits(network) output
+<p>Output Layer: Fully connected layer with 43 units for logits(network) output
 Activation: Softmax</p>
 <p>I started by experimenting with the LeNet architecture but added another convolutional layer and varied the number of units in the fully connected layers to increase performance, and so arrived at this architecture.</p>
 
@@ -32220,7 +32205,7 @@ Model saved
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
-<p>I started with the LeNet model and changed the parameters to suit classification problem after doing a couple of trial training. I also added an extra convolution layer and increased the number of feature maps in each layer.</p>
+<p>I started with the LeNet model and changed the parameters to suit classification problem after doing some trial training. I also added an extra convolution layer and increased the number of feature maps in each layer.</p>
 <p>The Adam optimizer works well since it is an adaptive method, which computes adaptive learning rates, so there is not much need to tune the optimizer parameters. However I noticed that increasing the learning rate gave a much worse result.</p>
 <p>I trained with large number of epochs (&gt;20) for early trial trainings but found that the validation accuracy grows above 0.95 while approaching 10 epochs and doesn't change much after 10 epochs, so I rationally chose 15 epochs to prevent overfitting of the model.</p>
 <p>Without dropout, the model gets good validation accuracies but to prevent overfitting and get a better test accuracy, I used dropout keep-probability of 0.50 for training and 1.0 during validation.</p>
@@ -43129,8 +43114,8 @@ AElFTkSuQmCC
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
-<p>Even though the model scored high on the test sets provided with the original dataset, it didn't perform so well with new, but similar images. With 16 new images gotten from the internet, the model had an accuracy of about <strong><em>50%</em></strong> with new test images. This is because most of the images are not in the training set and similar ones have markedly different appearance.
-The model interestingly fails on images that are similar but have different outline shapes. The model seems to have learned more features about the outline of the shapes in the sign than the contents in the shapes.</p>
+<p>Even though the model scored high on the test sets provided with the original dataset, it didn't perform so well with new images sourced from the internet. With 16 new images, the model had an accuracy of about <strong><em>50%</em></strong>. This is largely because most of the images are not in the training set and similar ones have markedly different appearance.
+It is good to observe that the model interestingly fails on images that are similar but have different outline shapes. The model seems to have learned more features about the outline of the shapes of the signs than the contents in the shapes.</p>
 
 </div>
 </div>
