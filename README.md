@@ -4,7 +4,7 @@
 ### Solution update
 The original project file is preserved here: [Traffic_Sign_Classifier.ipynb](https://github.com/toluwajosh/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
 
-My solution is here: [Traffic_Sign_Classifier_solution_better_letnet_and_vis.ipynb](https://github.com/toluwajosh/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier_solution_better_letnet_and_vis.ipynb)
+My solution is here: [Traffic_Sign_Classifier_solution.ipynb](https://github.com/toluwajosh/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier_solution.ipynb)
 
 ## Original Readme
 [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
